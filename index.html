@@ -7,49 +7,49 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #080E1A;
-  --bg2: #0D1526;
-  --bg3: #121D35;
-  --bg4: #18253F;
-  --border: rgba(255,255,255,0.07);
-  --border2: rgba(255,255,255,0.12);
-  --teal: #00C9A7;
-  --teal2: #00A88C;
-  --teal-dim: rgba(0,201,167,0.12);
-  --blue: #3B82F6;
-  --blue-dim: rgba(59,130,246,0.12);
-  --amber: #F59E0B;
-  --amber-dim: rgba(245,158,11,0.12);
-  --red: #EF4444;
-  --red-dim: rgba(239,68,68,0.12);
-  --green: #10B981;
-  --green-dim: rgba(16,185,129,0.12);
-  --white: #F0F4FF;
-  --white2: #B8C4D8;
-  --white3: #6B7A96;
-  --white4: #3D4D66;
+  --bg: #F4F6FA;
+  --bg2: #FFFFFF;
+  --bg3: #F0F2F7;
+  --bg4: #E4E8F0;
+  --border: rgba(0,0,0,0.08);
+  --border2: rgba(0,0,0,0.14);
+  --teal: #0099A8;
+  --teal2: #007A88;
+  --teal-dim: rgba(0,153,168,0.10);
+  --blue: #2563EB;
+  --blue-dim: rgba(37,99,235,0.09);
+  --amber: #D97706;
+  --amber-dim: rgba(217,119,6,0.10);
+  --red: #DC2626;
+  --red-dim: rgba(220,38,38,0.09);
+  --green: #059669;
+  --green-dim: rgba(5,150,105,0.10);
+  --white: #1A202C;
+  --white2: #374151;
+  --white3: #6B7280;
+  --white4: #9CA3AF;
   --font-display: 'Syne', sans-serif;
   --font-body: 'IBM Plex Sans', sans-serif;
   --font-mono: 'IBM Plex Mono', monospace;
   --r: 10px;
   --r-sm: 6px;
-  --shadow: 0 4px 24px rgba(0,0,0,0.4);
-  --shadow-lg: 0 8px 48px rgba(0,0,0,0.6);
+  --shadow: 0 2px 12px rgba(0,0,0,0.07);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body { font-family: var(--font-body); background: var(--bg); color: var(--white); min-height: 100vh; display: flex; overflow-x: hidden; }
 
 /* ─── SCROLLBAR ─── */
-::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--bg2); } ::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 3px; }
+::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--bg3); } ::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 3px; }
 
 /* ─── SIDEBAR ─── */
-.sidebar { width: 240px; min-height: 100vh; background: var(--bg2); border-right: 1px solid var(--border); position: fixed; left: 0; top: 0; bottom: 0; z-index: 200; display: flex; flex-direction: column; overflow-y: auto; }
+.sidebar { width: 240px; min-height: 100vh; background: #FFFFFF; border-right: 1px solid var(--border); position: fixed; left: 0; top: 0; bottom: 0; z-index: 200; display: flex; flex-direction: column; overflow-y: auto; }
 .sidebar-logo { padding: 24px 20px 20px; border-bottom: 1px solid var(--border); }
 .logo-mark { font-family: var(--font-display); font-size: 20px; font-weight: 800; letter-spacing: -0.5px; }
-.logo-mark .v { color: var(--white); }
+.logo-mark .v { color: #1A202C; }
 .logo-mark .num { color: var(--teal); }
-.logo-mark .cmd { color: var(--white2); font-weight: 500; }
+.logo-mark .cmd { color: #374151; font-weight: 500; }
 .logo-tag { font-size: 10.5px; color: var(--white3); margin-top: 4px; letter-spacing: 0.3px; }
 .sidebar-profile { margin: 12px; background: var(--bg3); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 12px; cursor: pointer; transition: border-color 0.2s; }
 .sidebar-profile:hover { border-color: var(--border2); }
@@ -70,7 +70,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--white)
 .nav-badge.amber { background: var(--amber-dim); color: var(--amber); }
 .nav-badge.teal { background: var(--teal-dim); color: var(--teal); }
 .sidebar-bottom { padding: 12px; border-top: 1px solid var(--border); }
-.upgrade-card { background: linear-gradient(135deg, #00A88C22, #3B82F622); border: 1px solid rgba(0,201,167,0.2); border-radius: var(--r-sm); padding: 14px; }
+.upgrade-card { background: linear-gradient(135deg, rgba(0,153,168,0.08), rgba(37,99,235,0.08)); border: 1px solid rgba(0,201,167,0.2); border-radius: var(--r-sm); padding: 14px; }
 .upgrade-title { font-size: 12px; font-weight: 700; color: var(--teal); font-family: var(--font-display); margin-bottom: 4px; }
 .upgrade-desc { font-size: 11px; color: var(--white3); margin-bottom: 10px; line-height: 1.5; }
 .upgrade-btn { width: 100%; background: var(--teal); color: var(--bg); border: none; border-radius: var(--r-sm); padding: 8px; font-size: 12px; font-weight: 700; cursor: pointer; font-family: var(--font-display); transition: background 0.15s; }
@@ -251,7 +251,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--white)
 
 /* ─── PRICING ─── */
 .pricing-card { border: 1px solid var(--border); border-radius: var(--r); padding: 28px; background: var(--bg2); display: flex; flex-direction: column; }
-.pricing-card.featured { border-color: rgba(0,201,167,0.4); background: linear-gradient(160deg, #0D2030 0%, #0D1526 100%); position: relative; }
+.pricing-card.featured { border-color: rgba(0,201,167,0.4); background: linear-gradient(160deg, #EBF9FB 0%, #EEF2FF 100%); position: relative; }
 .pricing-card.featured::before { content:'MOST POPULAR'; position:absolute; top:-1px; left:50%; transform:translateX(-50%); background: var(--teal); color: var(--bg); font-size: 9px; font-weight: 800; letter-spacing: 1px; padding: 4px 14px; border-radius: 0 0 8px 8px; font-family: var(--font-display); }
 .pricing-tier { font-size: 11px; font-weight: 600; color: var(--white3); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 10px; }
 .pricing-price { font-family: var(--font-display); font-size: 38px; font-weight: 800; color: var(--white); line-height: 1; }
@@ -328,7 +328,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--white)
 .divider-label::before, .divider-label::after { content:''; flex:1; border-top: 1px solid var(--border); }
 
 /* ─── DASHBOARD SUMMARY BANNER ─── */
-.summary-banner { background: linear-gradient(135deg, var(--bg3) 0%, #0D1F35 100%); border: 1px solid var(--border2); border-radius: var(--r); padding: 24px 28px; margin-bottom: 22px; position: relative; overflow: hidden; }
+.summary-banner { background: linear-gradient(135deg, #EBF4F6 0%, #EEF2FF 100%); border: 1px solid rgba(0,153,168,0.2); border-radius: var(--r); padding: 24px 28px; margin-bottom: 22px; position: relative; overflow: hidden; }
 .summary-banner::after { content:''; position:absolute; right:-40px; top:-40px; width:200px; height:200px; background: radial-gradient(circle, var(--teal-dim) 0%, transparent 70%); pointer-events:none; }
 .summary-banner h2 { font-family: var(--font-display); font-size: 20px; font-weight: 800; color: var(--white); margin-bottom: 6px; }
 .summary-banner p { font-size: 13px; color: var(--white3); max-width: 500px; line-height: 1.6; }
@@ -437,7 +437,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--white)
   </nav>
   <div class="sidebar-bottom">
     <div class="upgrade-card">
-      <div class="upgrade-title">Go Pro — $79/year</div>
+      <div class="upgrade-title">Go Pro — $9.99/year</div>
       <div class="upgrade-desc">Unlimited cases, SMS alerts, employer comparisons, PDF reports</div>
       <button class="upgrade-btn" onclick="showPage('pricing')">View Plans →</button>
     </div>
@@ -1161,8 +1161,8 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--white)
         </div>
         <div class="pricing-card featured">
           <div class="pricing-tier">Pro Annual</div>
-          <div class="pricing-price">$79 <span class="pricing-price-period">/year</span></div>
-          <div class="pricing-price-note">Save 34% vs monthly · $6.58/mo</div>
+          <div class="pricing-price">$9.99 <span class="pricing-price-period">/year</span></div>
+          <div class="pricing-price-note">Best value · less than $1/month</div>
           <hr class="pricing-divider">
           <div class="pricing-feature"><span class="check">✓</span> Unlimited receipt tracking</div>
           <div class="pricing-feature"><span class="check">✓</span> Email + SMS instant alerts</div>
@@ -1174,11 +1174,11 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--white)
           <div class="pricing-feature"><span class="check">✓</span> PDF report downloads</div>
           <div class="pricing-feature"><span class="check">✓</span> Processing time intelligence</div>
           <div class="pricing-feature"><span class="check">✓</span> Action deadline reminders</div>
-          <div class="pricing-btn-wrap"><button class="pricing-btn primary">Get Pro Annual — $79/yr</button></div>
+          <div class="pricing-btn-wrap"><button class="pricing-btn primary">Get Pro Annual — $9.99/yr</button></div>
         </div>
         <div class="pricing-card">
           <div class="pricing-tier">Pro Monthly</div>
-          <div class="pricing-price">$9.99 <span class="pricing-price-period">/mo</span></div>
+          <div class="pricing-price">$0.99 <span class="pricing-price-period">/mo</span></div>
           <div class="pricing-price-note">Cancel anytime</div>
           <hr class="pricing-divider">
           <div class="pricing-feature"><span class="check">✓</span> Everything in Pro Annual</div>
@@ -1189,7 +1189,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--white)
           <div class="pricing-feature"><span class="check">✓</span> Full timeline + projections</div>
           <div class="pricing-feature dim"><span class="cross">×</span> Annual discount (34% off)</div>
           <div class="pricing-feature dim"><span class="cross">×</span> Priority date forecast chart</div>
-          <div class="pricing-btn-wrap"><button class="pricing-btn">Get Pro Monthly</button></div>
+          <div class="pricing-btn-wrap"><button class="pricing-btn">Get Pro Monthly — $0.99/mo</button></div>
         </div>
       </div>
       <div class="card">
@@ -2100,7 +2100,7 @@ function showToast(msg, type = 'teal') {
   const t = document.createElement('div');
   t.id = 'toast';
   const colors = { teal: '#00C9A7', amber: '#F59E0B', red: '#EF4444', green: '#10B981' };
-  t.style.cssText = `position:fixed;bottom:24px;right:24px;background:#1A2B3E;border:1px solid ${colors[type]||colors.teal};border-radius:8px;padding:12px 18px;font-size:13px;color:#F0F4FF;z-index:9999;font-family:'IBM Plex Sans',sans-serif;box-shadow:0 8px 32px rgba(0,0,0,0.5);max-width:320px;animation:fadeUp 0.25s ease;`;
+  t.style.cssText = `position:fixed;bottom:24px;right:24px;background:#FFFFFF;border:1.5px solid ${colors[type]||colors.teal};border-radius:8px;padding:12px 18px;font-size:13px;color:#1A202C;z-index:9999;font-family:'IBM Plex Sans',sans-serif;box-shadow:0 8px 32px rgba(0,0,0,0.5);max-width:320px;animation:fadeUp 0.25s ease;`;
   t.innerHTML = `<span style="color:${colors[type]};margin-right:8px;">●</span>${msg}`;
   document.body.appendChild(t);
   setTimeout(() => { if (t.parentNode) t.remove(); }, 3500);
@@ -2230,6 +2230,7 @@ function ssoLogin(provider) {
   }, 1800);
 }
 </script>
+<script>
 document.getElementById('topbar-date').textContent = new Date().toLocaleDateString('en-US',{month:'long',year:'numeric'});
 
 // ═══════════════════════════════════════════════════════
@@ -2239,8 +2240,7 @@ document.getElementById('topbar-date').textContent = new Date().toLocaleDateStri
 
 // ── CONFIG — update these after deploying ──
 const DATA_BASE   = '';                        // empty = same origin (GitHub Pages)
-//const WORKER_URL  = 'https://uscis-proxy.YOUR_NAME.workers.dev';  // your CF Worker URL
-const WORKER_URL = 'https://visadash-uscis-proxy.kkbcori-pvt.workers.dev';  // your CF Worker URL
+const WORKER_URL  = 'https://visadash-uscis-proxy.kkbcori-pvt.workers.dev';
 
 // ── Global data store ──
 window.LIVE = { wages: null, employers: null, bulletin: null, processing: null };

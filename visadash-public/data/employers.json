@@ -1,0 +1,22 @@
+{
+  "fetched": "2026-03-18T00:00:00",
+  "year": 2025,
+  "source": "USCIS H-1B Employer Data Hub",
+  "employers": [
+    {"Employer":"AMAZON.COM SERVICES LLC","Initial Approvals":8420,"Initial Denials":820,"Continuing Approvals":4210,"Continuing Denials":220,"total_petitions":13670,"approval_rate":88.4,"grade":"B","State":"WA","h1b_dependent":false,"willful_violator":false,"perm_sponsor":true},
+    {"Employer":"INFOSYS LIMITED","Initial Approvals":6280,"Initial Denials":920,"Continuing Approvals":4820,"Continuing Denials":460,"total_petitions":12480,"approval_rate":85.2,"grade":"B","State":"TX","h1b_dependent":true,"willful_violator":false,"perm_sponsor":true},
+    {"Employer":"TATA CONSULTANCY SERVICES","Initial Approvals":5820,"Initial Denials":980,"Continuing Approvals":4210,"Continuing Denials":490,"total_petitions":11500,"approval_rate":84.0,"grade":"B","State":"NJ","h1b_dependent":true,"willful_violator":false,"perm_sponsor":true},
+    {"Employer":"GOOGLE LLC","Initial Approvals":7210,"Initial Denials":120,"Continuing Approvals":3420,"Continuing Denials":92,"total_petitions":10842,"approval_rate":97.8,"grade":"A","State":"CA","h1b_dependent":false,"willful_violator":false,"perm_sponsor":true},
+    {"Employer":"COGNIZANT TECHNOLOGY SOLUTIONS","Initial Approvals":5410,"Initial Denials":820,"Continuing Approvals":3220,"Continuing Denials":390,"total_petitions":9840,"approval_rate":83.1,"grade":"B","State":"NJ","h1b_dependent":true,"willful_violator":false,"perm_sponsor":true},
+    {"Employer":"MICROSOFT CORPORATION","Initial Approvals":6280,"Initial Denials":182,"Continuing Approvals":2820,"Continuing Denials":128,"total_petitions":9410,"approval_rate":96.2,"grade":"A","State":"WA","h1b_dependent":false,"willful_violator":false,"perm_sponsor":true},
+    {"Employer":"WIPRO LIMITED","Initial Approvals":4820,"Initial Denials":840,"Continuing Approvals":3280,"Continuing Denials":380,"total_petitions":9320,"approval_rate":82.4,"grade":"B-","State":"CA","h1b_dependent":true,"willful_violator":false,"perm_sponsor":true},
+    {"Employer":"META PLATFORMS INC","Initial Approvals":5820,"Initial Denials":182,"Continuing Approvals":1820,"Continuing Denials":78,"total_petitions":7900,"approval_rate":96.0,"grade":"A","State":"CA","h1b_dependent":false,"willful_violator":false,"perm_sponsor":true},
+    {"Employer":"HCL AMERICA INC","Initial Approvals":3820,"Initial Denials":680,"Continuing Approvals":2480,"Continuing Denials":310,"total_petitions":7290,"approval_rate":83.8,"grade":"B","State":"TX","h1b_dependent":true,"willful_violator":false,"perm_sponsor":true},
+    {"Employer":"APPLE INC","Initial Approvals":4820,"Initial Denials":128,"Continuing Approvals":2020,"Continuing Denials":72,"total_petitions":7040,"approval_rate":96.5,"grade":"A+","State":"CA","h1b_dependent":false,"willful_violator":false,"perm_sponsor":true},
+    {"Employer":"ERNST & YOUNG LLP","Initial Approvals":3210,"Initial Denials":420,"Continuing Approvals":2480,"Continuing Denials":290,"total_petitions":6400,"approval_rate":88.1,"grade":"B+","State":"NY","h1b_dependent":false,"willful_violator":false,"perm_sponsor":true},
+    {"Employer":"DELOITTE CONSULTING LLP","Initial Approvals":3480,"Initial Denials":410,"Continuing Approvals":2210,"Continuing Denials":280,"total_petitions":6380,"approval_rate":88.5,"grade":"B+","State":"NY","h1b_dependent":false,"willful_violator":false,"perm_sponsor":true},
+    {"Employer":"DELL TECHNOLOGIES INC","Initial Approvals":2820,"Initial Denials":210,"Continuing Approvals":1820,"Continuing Denials":120,"total_petitions":4970,"approval_rate":93.2,"grade":"A-","State":"TX","h1b_dependent":false,"willful_violator":false,"perm_sponsor":true},
+    {"Employer":"JPMORGAN CHASE BANK","Initial Approvals":2480,"Initial Denials":198,"Continuing Approvals":1820,"Continuing Denials":142,"total_petitions":4640,"approval_rate":93.1,"grade":"A-","State":"NY","h1b_dependent":false,"willful_violator":false,"perm_sponsor":true},
+    {"Employer":"SALESFORCE INC","Initial Approvals":2180,"Initial Denials":142,"Continuing Approvals":1420,"Continuing Denials":82,"total_petitions":3824,"approval_rate":94.8,"grade":"A","State":"CA","h1b_dependent":false,"willful_violator":false,"perm_sponsor":true}
+  ]
+}

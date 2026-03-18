@@ -1,0 +1,15 @@
+{
+  "fetched": "2026-03-18T00:00:00",
+  "month": "March 2026",
+  "source": "https://travel.state.gov",
+  "employment_based": {
+    "EB1": { "All":"C", "China":"2022-11-08", "India":"2023-01-01", "Mexico":"C", "Philippines":"C" },
+    "EB2": { "All":"C", "China":"2020-06-01", "India":"2012-01-01", "Mexico":"C", "Philippines":"C" },
+    "EB3": { "All":"C", "China":"2020-10-01", "India":"2012-04-01", "Mexico":"C", "Philippines":"2021-10-01" }
+  },
+  "movement": {
+    "EB1_India": "+2.5 weeks", "EB2_India": "+2.5 weeks",
+    "EB3_India": "+3.5 weeks", "EB2_China": "No movement"
+  },
+  "previous_month": { "EB2_India": "2011-12-15", "EB3_India": "2012-03-08" }
+}

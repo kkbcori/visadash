@@ -1,0 +1,40 @@
+{
+  "fetched": "2026-03-18T00:00:00",
+  "year": 2025,
+  "quarter": 4,
+  "source": "DOL OFLC LCA Disclosure Data FY2025 Q4",
+  "prevailing_wages": [
+    {"SOC_CODE":"15-1252","WORKSITE_STATE":"TX","WAGE_LEVEL":"I","median_wage":78540},
+    {"SOC_CODE":"15-1252","WORKSITE_STATE":"TX","WAGE_LEVEL":"II","median_wage":98000},
+    {"SOC_CODE":"15-1252","WORKSITE_STATE":"TX","WAGE_LEVEL":"III","median_wage":112847},
+    {"SOC_CODE":"15-1252","WORKSITE_STATE":"TX","WAGE_LEVEL":"IV","median_wage":138290},
+    {"SOC_CODE":"15-1252","WORKSITE_STATE":"CA","WAGE_LEVEL":"I","median_wage":112000},
+    {"SOC_CODE":"15-1252","WORKSITE_STATE":"CA","WAGE_LEVEL":"II","median_wage":142000},
+    {"SOC_CODE":"15-1252","WORKSITE_STATE":"CA","WAGE_LEVEL":"III","median_wage":172500},
+    {"SOC_CODE":"15-1252","WORKSITE_STATE":"CA","WAGE_LEVEL":"IV","median_wage":215000},
+    {"SOC_CODE":"15-1252","WORKSITE_STATE":"NY","WAGE_LEVEL":"I","median_wage":98000},
+    {"SOC_CODE":"15-1252","WORKSITE_STATE":"NY","WAGE_LEVEL":"II","median_wage":122000},
+    {"SOC_CODE":"15-1252","WORKSITE_STATE":"NY","WAGE_LEVEL":"III","median_wage":148000},
+    {"SOC_CODE":"15-1252","WORKSITE_STATE":"NY","WAGE_LEVEL":"IV","median_wage":182000},
+    {"SOC_CODE":"15-1252","WORKSITE_STATE":"WA","WAGE_LEVEL":"I","median_wage":105000},
+    {"SOC_CODE":"15-1252","WORKSITE_STATE":"WA","WAGE_LEVEL":"II","median_wage":130000},
+    {"SOC_CODE":"15-1252","WORKSITE_STATE":"WA","WAGE_LEVEL":"III","median_wage":158000},
+    {"SOC_CODE":"15-1252","WORKSITE_STATE":"WA","WAGE_LEVEL":"IV","median_wage":195000},
+    {"SOC_CODE":"15-1211","WORKSITE_STATE":"TX","WAGE_LEVEL":"I","median_wage":72100},
+    {"SOC_CODE":"15-1211","WORKSITE_STATE":"TX","WAGE_LEVEL":"II","median_wage":89400},
+    {"SOC_CODE":"15-1211","WORKSITE_STATE":"TX","WAGE_LEVEL":"III","median_wage":104200},
+    {"SOC_CODE":"15-1211","WORKSITE_STATE":"TX","WAGE_LEVEL":"IV","median_wage":126800},
+    {"SOC_CODE":"15-2051","WORKSITE_STATE":"TX","WAGE_LEVEL":"I","median_wage":82000},
+    {"SOC_CODE":"15-2051","WORKSITE_STATE":"TX","WAGE_LEVEL":"II","median_wage":104000},
+    {"SOC_CODE":"15-2051","WORKSITE_STATE":"TX","WAGE_LEVEL":"III","median_wage":124000},
+    {"SOC_CODE":"15-2051","WORKSITE_STATE":"TX","WAGE_LEVEL":"IV","median_wage":152000}
+  ],
+  "soc_titles": {
+    "15-1252": "Software Developers & Engineers",
+    "15-1211": "Computer Systems Analysts",
+    "15-2051": "Data Scientists",
+    "15-1244": "Network & Systems Admins",
+    "17-2141": "Mechanical Engineers",
+    "11-1021": "General & Operations Managers"
+  }
+}

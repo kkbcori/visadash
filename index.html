@@ -945,87 +945,63 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--white)
 
     <!-- ═══ VISA BULLETIN ═══ -->
     <div class="page" id="page-visa-bulletin">
+
+      <!-- Header card -->
       <div class="card" style="margin-bottom:16px;">
-        <div class="card-title">
-          <div class="card-title-left"><div class="card-icon blue" style="width:24px;height:24px;font-size:12px;">📋</div> <span class="live-bulletin-month">May 2026</span> Visa Bulletin — Employment-Based Categories</div>
-          <span style="font-size:11px;color:var(--white3);">Source: travel.state.gov · Updated May 1, 2026</span>
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:4px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="card-icon blue" style="width:28px;height:28px;font-size:14px;">📋</div>
+            <div>
+              <div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--white);">
+                <span class="live-bulletin-month">Loading...</span> Visa Bulletin
+              </div>
+              <div style="font-size:11.5px;color:var(--white3);margin-top:2px;">
+                Employment-Based Categories · Source: <a href="https://travel.state.gov" target="_blank" style="color:var(--teal);">travel.state.gov</a>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <span style="font-size:11px;background:#EFF6FF;color:#1E40AF;padding:4px 10px;border-radius:4px;font-weight:600;">
+              Your category: <span id="user-cat-badge">EB-2 India</span>
+            </span>
+            <a href="https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html"
+               target="_blank"
+               style="font-size:12px;color:var(--teal);font-weight:500;text-decoration:none;">
+              Official Bulletin →
+            </a>
+          </div>
         </div>
-        <div class="bulletin-row header">
-          <div>Category</div><div>Cutoff Date</div><div>Previous (Apr)</div><div>Movement</div>
-        </div>
-        <div class="bulletin-row">
-          <div style="font-size:13px;">EB-1 All Chargeability</div>
-          <div class="mono" style="color:var(--green);">Current (C)</div>
-          <div class="mono" style="color:var(--white3);">Current (C)</div>
-          <div class="bulletin-move none">—</div>
-        </div>
-        <div class="bulletin-row">
-          <div style="font-size:13px;">EB-1 China</div>
-          <div class="mono">Nov 08, 2022</div>
-          <div class="mono" style="color:var(--white3);">Oct 22, 2022</div>
-          <div class="bulletin-move pos">+2.5 wks</div>
-        </div>
-        <div class="bulletin-row">
-          <div style="font-size:13px;">EB-1 India</div>
-          <div class="mono">Jan 01, 2023</div>
-          <div class="mono" style="color:var(--white3);">Dec 15, 2022</div>
-          <div class="bulletin-move pos">+2.5 wks</div>
-        </div>
-        <div class="bulletin-row">
-          <div style="font-size:13px;">EB-2 All Chargeability</div>
-          <div class="mono" style="color:var(--green);">Current (C)</div>
-          <div class="mono" style="color:var(--white3);">Current (C)</div>
-          <div class="bulletin-move none">—</div>
-        </div>
-        <div class="bulletin-row your-row">
-          <div style="font-size:13px;font-weight:600;color:var(--white);">EB-2 India ← <span style="color:var(--blue);font-size:11px;">YOUR CATEGORY</span></div>
-          <div class="mono" style="color:var(--amber);font-weight:600;">Jan 01, 2012</div>
-          <div class="mono" style="color:var(--white3);">Jan 01, 2012</div>
-          <div class="bulletin-move none">No movement</div>
-        </div>
-        <div class="bulletin-row">
-          <div style="font-size:13px;">EB-2 China</div>
-          <div class="mono">Jun 01, 2020</div>
-          <div class="mono" style="color:var(--white3);">Jun 08, 2020</div>
-          <div class="bulletin-move neg">-1 wk</div>
-        </div>
-        <div class="bulletin-row">
-          <div style="font-size:13px;">EB-3 All Chargeability</div>
-          <div class="mono" style="color:var(--green);">Current (C)</div>
-          <div class="mono" style="color:var(--white3);">Current (C)</div>
-          <div class="bulletin-move none">—</div>
-        </div>
-        <div class="bulletin-row">
-          <div style="font-size:13px;">EB-3 India</div>
-          <div class="mono">Apr 01, 2012</div>
-          <div class="mono" style="color:var(--white3);">Mar 08, 2012</div>
-          <div class="bulletin-move pos">+3.5 wks</div>
-        </div>
-        <div class="bulletin-row">
-          <div style="font-size:13px;">EB-3 China</div>
-          <div class="mono">Oct 01, 2020</div>
-          <div class="mono" style="color:var(--white3);">Sep 22, 2020</div>
-          <div class="bulletin-move pos">+1.5 wks</div>
-        </div>
-        </div>
-        <div class="insight amber" style="margin-top:14px;">EB-2 India had <strong>no movement</strong> this month (Jan 2012 cutoff remains). At the trailing 12-month average movement of ~3 weeks/month, your Jan 2019 priority date requires approximately 112 more months of movement — roughly 9–10 additional years, before retrogression risk.</div>
       </div>
-      <div class="card">
-        <div class="card-title"><div class="card-title-left"><div class="card-icon amber" style="width:24px;height:24px;font-size:12px;">📈</div> Historical Movement — EB-2 India (Last 12 Months)</div></div>
-        <table class="data-table">
-          <thead><tr><th>Month</th><th>Cutoff Date</th><th>Movement</th><th>Notes</th></tr></thead>
-          <tbody>
-            <tr><td>May 2026</td><td class="mono">Jan 01, 2012</td><td style="color:var(--white4);">No movement</td><td style="font-size:11.5px;color:var(--white3);">Demand pressure</td></tr>
-            <tr><td>Apr 2026</td><td class="mono">Jan 01, 2012</td><td style="color:var(--white4);">No movement</td><td style="font-size:11.5px;color:var(--white3);">—</td></tr>
-            <tr><td>Mar 2026</td><td class="mono">Dec 15, 2011</td><td style="color:var(--red);">-2.5 weeks</td><td style="font-size:11.5px;color:var(--white3);">Retrograded</td></tr>
-            <tr><td>Feb 2026</td><td class="mono">Jan 08, 2012</td><td style="color:var(--green);">+3.5 weeks</td><td style="font-size:11.5px;color:var(--white3);">Good movement</td></tr>
-            <tr><td>Jan 2026</td><td class="mono">Dec 01, 2011</td><td style="color:var(--green);">+3 weeks</td><td style="font-size:11.5px;color:var(--white3);">—</td></tr>
-            <tr><td>Dec 2025</td><td class="mono">Nov 08, 2011</td><td style="color:var(--green);">+2 weeks</td><td style="font-size:11.5px;color:var(--white3);">Holiday slowdown</td></tr>
-            <tr><td>Nov 2025</td><td class="mono">Oct 22, 2011</td><td style="color:var(--green);">+4 weeks</td><td style="font-size:11.5px;color:var(--white3);">Strong movement</td></tr>
-            <tr><td>Oct 2025</td><td class="mono">Sep 22, 2011</td><td style="color:var(--green);">+4.5 weeks</td><td style="font-size:11.5px;color:var(--white3);">New FY spillover</td></tr>
-          </tbody>
-        </table>
+
+      <!-- Both tables render here -->
+      <div id="bulletin-live-body">
+        <div style="padding:40px;text-align:center;color:var(--white3);">
+          <div class="spinner" style="margin:0 auto 12px;"></div>
+          Loading visa bulletin data...
+        </div>
       </div>
+
+      <!-- Legend -->
+      <div class="card" style="margin-top:16px;">
+        <div style="display:flex;gap:24px;flex-wrap:wrap;font-size:12px;">
+          <div style="display:flex;align-items:center;gap:6px;">
+            <span style="width:12px;height:12px;background:#D1FAE5;border:1px solid #059669;border-radius:2px;display:inline-block;"></span>
+            <span style="color:var(--white2);">Current (C) — No backlog, file immediately</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <span style="width:12px;height:12px;background:#DBEAFE;border:1px solid #2563EB;border-radius:2px;display:inline-block;"></span>
+            <span style="color:var(--white2);">Your category</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <span style="width:12px;height:12px;background:#FEF3C7;border:1px solid #D97706;border-radius:2px;display:inline-block;"></span>
+            <span style="color:var(--white2);">Your specific date cell</span>
+          </div>
+          <div style="color:var(--white3);font-style:italic;">
+            Table A = must reach this date to get visa · Table B = can file I-485 when date is current
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <!-- ═══ ALERTS ═══ -->
@@ -2353,28 +2329,25 @@ function getDate(table, ebKey, area) {
 }
 
 // ── Build a full bulletin table HTML for a given EB table ──
-function buildBulletinTable(table, userEbKey, userCountry, label) {
+function buildBulletinTable(table, userEbKey, userCountry) {
   if (!table || Object.keys(table).length === 0)
-    return '<div style="padding:16px;color:var(--white3);font-size:13px;">Not available this month</div>';
+    return '<div style="padding:16px 0;color:var(--white3);font-size:13px;font-style:italic;">Not available for this month — State Dept may publish later.</div>';
 
   const areas = ['All', 'China', 'India', 'Mexico', 'Philippines'];
-  const colHeaders = ['Priority', 'Category', 'All Chargeability', 'China', 'India', 'Mexico', 'Philippines'];
-
-  // Category full labels
   const catLabels = {
-    EB1: '1st — Priority Workers',
-    EB2: '2nd — Adv. Degree / Exceptional Ability',
-    EB3: '3rd — Skilled Workers & Professionals',
-    EB4: '4th — Special Immigrants',
-    EB5: '5th — Employment Creation (Investors)',
+    EB1: '1st Priority — Priority Workers',
+    EB2: '2nd Priority — Adv. Degree / Exceptional Ability',
+    EB3: '3rd Priority — Skilled Workers & Professionals',
+    EB4: '4th Priority — Special Immigrants',
+    EB5: '5th Priority — Employment Creation (Investors)',
   };
 
-  let html = `<div style="overflow-x:auto;">
-    <table class="data-table" style="min-width:700px;">
+  let html = `<div style="overflow-x:auto;margin-top:8px;">
+    <table class="data-table" style="min-width:680px;width:100%;">
       <thead>
         <tr>
-          <th>Priority</th>
-          <th>Category</th>
+          <th style="min-width:60px;">Priority</th>
+          <th style="min-width:220px;">Category</th>
           <th>All Chargeability</th>
           <th>China</th>
           <th>India</th>
@@ -2386,27 +2359,36 @@ function buildBulletinTable(table, userEbKey, userCountry, label) {
 
   for (const [ebKey, val] of Object.entries(table)) {
     const isYours = (ebKey === userEbKey);
-    const rowStyle = isYours
-      ? 'background:#EFF6FF;border-left:3px solid var(--blue);'
+    const rowBg   = isYours ? 'background:#EFF6FF;' : '';
+    const rowBdr  = isYours ? 'border-left:3px solid #2563EB;' : '';
+
+    html += `<tr style="${rowBg}${rowBdr}">`;
+
+    // Priority column
+    html += `<td style="font-family:var(--font-display);font-weight:800;font-size:15px;color:#2563EB;">${ebKey.replace('EB','EB-')}</td>`;
+
+    // Category label column
+    const yourBadge = isYours
+      ? `<span style="background:#DBEAFE;color:#1E40AF;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;margin-left:6px;white-space:nowrap;">YOUR CATEGORY</span>`
       : '';
+    html += `<td style="font-size:12.5px;color:var(--white2);">${catLabels[ebKey] || ebKey}${yourBadge}</td>`;
 
-    html += `<tr style="${rowStyle}">`;
-    html += `<td style="font-weight:700;color:var(--blue);font-size:13px;">${ebKey.replace('EB','EB-')}</td>`;
-    html += `<td style="font-size:12px;color:var(--white2);">${catLabels[ebKey] || ebKey}${isYours ? ' <span style="background:#DBEAFE;color:#1E40AF;font-size:10px;padding:2px 6px;border-radius:4px;margin-left:4px;">YOUR CATEGORY</span>' : ''}</td>`;
-
+    // Date columns
     for (const area of areas) {
-      const date = val.dates ? (val.dates[area] || 'C') : 'C';
-      const isCurr = date === 'C';
-      const isYoursArea = isYours && area === userCountry;
-      let cellStyle = '';
-      if (isYoursArea)
-        cellStyle = 'background:#DBEAFE;font-weight:700;color:#1E40AF;';
-      else if (isCurr)
-        cellStyle = 'color:#047857;font-weight:600;';
-      else
-        cellStyle = 'color:var(--white2);';
+      const date       = val.dates ? (val.dates[area] || 'C') : 'C';
+      const isCurr     = (date === 'C');
+      const isYoursCell = isYours && (area === userCountry);
 
-      html += `<td class="mono" style="font-size:12px;${cellStyle}">${isCurr ? 'Current' : fmtDate(date)}</td>`;
+      let cellStyle = 'font-size:12px;';
+      if (isYoursCell)
+        cellStyle += 'background:#DBEAFE;font-weight:700;color:#1E40AF;';
+      else if (isCurr)
+        cellStyle += 'color:#047857;font-weight:600;';
+      else
+        cellStyle += 'color:var(--white2);';
+
+      const display = isCurr ? 'Current ✓' : fmtDate(date);
+      html += `<td class="mono" style="${cellStyle}">${display}</td>`;
     }
     html += '</tr>';
   }
@@ -2433,6 +2415,13 @@ function patchBulletinUI(data) {
 
   // Store for timeline page
   window.LIVE._bulletin   = eb;
+
+  // Update user category badge in header
+  const catBadge = document.getElementById('user-cat-badge');
+  if (catBadge) {
+    const catNames = {EB1:'EB-1',EB2:'EB-2',EB3:'EB-3',EB4:'EB-4',EB5:'EB-5'};
+    catBadge.textContent = (catNames[userEbKey] || userEbKey) + ' ' + userCountry;
+  }
   window.LIVE._tableA     = tableA;
   window.LIVE._tableB     = tableB;
 
@@ -2447,19 +2436,36 @@ function patchBulletinUI(data) {
     const labelB = data.table_b_label || 'B. Dates for Filing of Employment-Based Visa Applications';
 
     bulletinContainer.innerHTML = `
-      <div style="margin-bottom:6px;">
-        <div style="font-size:11px;font-weight:700;color:var(--white3);text-transform:uppercase;
-                    letter-spacing:0.6px;padding:10px 0 6px;border-top:1px solid var(--border);">
-          ${labelA}
+      <div class="card" style="margin-bottom:16px;">
+        <div style="margin-bottom:12px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+            <span style="background:#EF444420;color:#B91C1C;font-size:10px;font-weight:800;
+                         padding:3px 9px;border-radius:4px;letter-spacing:0.5px;">TABLE A</span>
+            <span style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--white);">
+              Final Action Dates for Employment-Based Preference Cases
+            </span>
+          </div>
+          <div style="font-size:12px;color:var(--white3);">
+            Your priority date must be <strong>on or before</strong> this cutoff date to receive a visa number.
+          </div>
         </div>
-        ${buildBulletinTable(tableA, userEbKey, userCountry, labelA)}
+        ${buildBulletinTable(tableA, userEbKey, userCountry)}
       </div>
-      <div style="margin-top:20px;">
-        <div style="font-size:11px;font-weight:700;color:var(--white3);text-transform:uppercase;
-                    letter-spacing:0.6px;padding:10px 0 6px;border-top:1px solid var(--border);">
-          ${labelB}
+      <div class="card">
+        <div style="margin-bottom:12px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+            <span style="background:#2563EB20;color:#1D4ED8;font-size:10px;font-weight:800;
+                         padding:3px 9px;border-radius:4px;letter-spacing:0.5px;">TABLE B</span>
+            <span style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--white);">
+              Dates for Filing of Employment-Based Visa Applications
+            </span>
+          </div>
+          <div style="font-size:12px;color:var(--white3);">
+            You may submit your I-485 application when your priority date is earlier than this cutoff —
+            even if Table A is not yet current. Requires USCIS to confirm visa number availability.
+          </div>
         </div>
-        ${buildBulletinTable(tableB, userEbKey, userCountry, labelB)}
+        ${buildBulletinTable(tableB, userEbKey, userCountry)}
       </div>`;
   }
 

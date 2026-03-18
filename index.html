@@ -2328,62 +2328,88 @@ function getDate(table, ebKey, area) {
   return table[ebKey].dates ? (table[ebKey].dates[area] || 'C') : 'C';
 }
 
-// ── Build a full bulletin table HTML for a given EB table ──
-function buildBulletinTable(table, userEbKey, userCountry) {
-  if (!table || Object.keys(table).length === 0)
+// ── Build a full bulletin table HTML — accepts array of row objects ──
+function buildBulletinTable(tableRows, userEbKey, userCountry) {
+  // Support both old dict format and new array format
+  let rows = tableRows;
+  if (!Array.isArray(tableRows)) {
+    // Legacy dict format — convert to array
+    rows = Object.entries(tableRows || {}).map(([k,v]) => ({
+      key: k, label: k, eb_group: k, dates: v.dates || v
+    }));
+  }
+  if (!rows || rows.length === 0)
     return '<div style="padding:16px 0;color:var(--white3);font-size:13px;font-style:italic;">Not available for this month — State Dept may publish later.</div>';
 
   const areas = ['All', 'China', 'India', 'Mexico', 'Philippines'];
-  const catLabels = {
-    EB1: '1st Priority — Priority Workers',
-    EB2: '2nd Priority — Adv. Degree / Exceptional Ability',
-    EB3: '3rd Priority — Skilled Workers & Professionals',
-    EB4: '4th Priority — Special Immigrants',
-    EB5: '5th Priority — Employment Creation (Investors)',
-  };
 
   let html = `<div style="overflow-x:auto;margin-top:8px;">
-    <table class="data-table" style="min-width:680px;width:100%;">
+    <table class="data-table" style="min-width:720px;width:100%;">
       <thead>
         <tr>
-          <th style="min-width:60px;">Priority</th>
-          <th style="min-width:220px;">Category</th>
-          <th>All Chargeability</th>
-          <th>China</th>
-          <th>India</th>
-          <th>Mexico</th>
-          <th>Philippines</th>
+          <th style="min-width:55px;width:55px;">Priority</th>
+          <th style="min-width:260px;">Category</th>
+          <th style="min-width:100px;">All Chargeability</th>
+          <th style="min-width:90px;">China</th>
+          <th style="min-width:90px;">India</th>
+          <th style="min-width:90px;">Mexico</th>
+          <th style="min-width:90px;">Philippines</th>
         </tr>
       </thead>
       <tbody>`;
 
-  for (const [ebKey, val] of Object.entries(table)) {
-    const isYours = (ebKey === userEbKey);
-    const rowBg   = isYours ? 'background:#EFF6FF;' : '';
-    const rowBdr  = isYours ? 'border-left:3px solid #2563EB;' : '';
+  // Track which EB group we last rendered to draw group separators
+  let lastEbGroup = null;
+
+  for (const row of rows) {
+    const key      = row.key      || '';
+    const label    = row.label    || key;
+    const ebGroup  = row.eb_group || key;
+    const dates    = row.dates    || {};
+
+    // Is this the user's primary category?
+    const isYours = (ebGroup === userEbKey);
+    // Sub-rows (Other Workers, Religious, Set Aside) get slightly muted style
+    const isSub   = key.includes('_');
+
+    const rowBg  = isYours ? 'background:#EFF6FF;' : (isSub ? 'background:#FAFAFA;' : '');
+    const rowBdr = isYours ? 'border-left:3px solid #2563EB;' : '';
 
     html += `<tr style="${rowBg}${rowBdr}">`;
 
-    // Priority column
-    html += `<td style="font-family:var(--font-display);font-weight:800;font-size:15px;color:#2563EB;">${ebKey.replace('EB','EB-')}</td>`;
+    // Priority column — show EB number only on primary row, blank on sub-rows
+    const priorityDisplay = isSub
+      ? `<span style="color:#9CA3AF;font-size:11px;">↳</span>`
+      : `<span style="font-family:var(--font-display);font-weight:800;font-size:14px;color:#2563EB;">
+           ${ebGroup.replace('EB','EB-')}
+         </span>`;
+    html += `<td style="text-align:center;">${priorityDisplay}</td>`;
 
     // Category label column
-    const yourBadge = isYours
-      ? `<span style="background:#DBEAFE;color:#1E40AF;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;margin-left:6px;white-space:nowrap;">YOUR CATEGORY</span>`
+    const yourBadge = isYours && !isSub
+      ? `<span style="background:#DBEAFE;color:#1E40AF;font-size:10px;font-weight:700;
+                      padding:2px 7px;border-radius:4px;margin-left:6px;white-space:nowrap;">
+           YOUR CATEGORY
+         </span>`
       : '';
-    html += `<td style="font-size:12.5px;color:var(--white2);">${catLabels[ebKey] || ebKey}${yourBadge}</td>`;
+    const labelStyle = isSub
+      ? 'font-size:12px;color:#6B7280;padding-left:16px;'
+      : 'font-size:13px;color:var(--white2);font-weight:500;';
+    html += `<td style="${labelStyle}">${label}${yourBadge}</td>`;
 
     // Date columns
     for (const area of areas) {
-      const date       = val.dates ? (val.dates[area] || 'C') : 'C';
-      const isCurr     = (date === 'C');
-      const isYoursCell = isYours && (area === userCountry);
+      const date        = dates[area] || 'C';
+      const isCurr      = (date === 'C');
+      const isYoursCell = isYours && !isSub && (area === userCountry);
 
       let cellStyle = 'font-size:12px;';
       if (isYoursCell)
         cellStyle += 'background:#DBEAFE;font-weight:700;color:#1E40AF;';
       else if (isCurr)
         cellStyle += 'color:#047857;font-weight:600;';
+      else if (isSub)
+        cellStyle += 'color:#6B7280;';
       else
         cellStyle += 'color:var(--white2);';
 
@@ -2401,8 +2427,8 @@ function buildBulletinTable(table, userEbKey, userCountry) {
 function patchBulletinUI(data) {
   if (!data) return;
 
-  const tableA = data.table_a || {};
-  const tableB = data.table_b || {};
+  const tableA = data.table_a || [];
+  const tableB = data.table_b || [];
   // Legacy fallback
   const eb = data.employment_based || {};
 
@@ -2473,8 +2499,14 @@ function patchBulletinUI(data) {
   const dashBulletin = document.getElementById('dash-bulletin-rows');
   if (dashBulletin) {
     const getD = (key, area) => {
-      const d = tableA[key] ? (tableA[key].dates || {})[area] : null;
-      return d || eb[key]?.[area] || 'C';
+      // tableA is now an array of row objects
+      if (Array.isArray(tableA)) {
+        const row = tableA.find(r => r.eb_group === key && !r.key.includes('_'));
+        if (row && row.dates && row.dates[area]) return row.dates[area];
+      } else if (tableA[key]) {
+        return (tableA[key].dates || {})[area] || 'C';
+      }
+      return (eb[key] || {})[area] || 'C';
     };
     const rows = [
       { label:'EB-1 (India)',       key:'EB1', area:'India'  },

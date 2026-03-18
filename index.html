@@ -2240,8 +2240,7 @@ document.getElementById('topbar-date').textContent = new Date().toLocaleDateStri
 // ═══════════════════════════════════════════════════════
 
 // ── CONFIG — update these after deploying ──
-// const DATA_BASE   = '';                        // empty = same origin (GitHub Pages)
-const DATA_BASE = '/visadash';
+const DATA_BASE   = '';                        // empty = same origin (GitHub Pages)
 const WORKER_URL  = 'https://visadash-uscis-proxy.kkbcori-pvt.workers.dev';
 
 // ── Global data store ──
@@ -2347,87 +2346,164 @@ function fmtDate(iso) {
   } catch(e) { return iso; }
 }
 
+// ── Get date from table_a or table_b ──
+function getDate(table, ebKey, area) {
+  if (!table || !table[ebKey]) return 'C';
+  return table[ebKey].dates ? (table[ebKey].dates[area] || 'C') : 'C';
+}
+
+// ── Build a full bulletin table HTML for a given EB table ──
+function buildBulletinTable(table, userEbKey, userCountry, label) {
+  if (!table || Object.keys(table).length === 0)
+    return '<div style="padding:16px;color:var(--white3);font-size:13px;">Not available this month</div>';
+
+  const areas = ['All', 'China', 'India', 'Mexico', 'Philippines'];
+  const colHeaders = ['Priority', 'Category', 'All Chargeability', 'China', 'India', 'Mexico', 'Philippines'];
+
+  // Category full labels
+  const catLabels = {
+    EB1: '1st — Priority Workers',
+    EB2: '2nd — Adv. Degree / Exceptional Ability',
+    EB3: '3rd — Skilled Workers & Professionals',
+    EB4: '4th — Special Immigrants',
+    EB5: '5th — Employment Creation (Investors)',
+  };
+
+  let html = `<div style="overflow-x:auto;">
+    <table class="data-table" style="min-width:700px;">
+      <thead>
+        <tr>
+          <th>Priority</th>
+          <th>Category</th>
+          <th>All Chargeability</th>
+          <th>China</th>
+          <th>India</th>
+          <th>Mexico</th>
+          <th>Philippines</th>
+        </tr>
+      </thead>
+      <tbody>`;
+
+  for (const [ebKey, val] of Object.entries(table)) {
+    const isYours = (ebKey === userEbKey);
+    const rowStyle = isYours
+      ? 'background:#EFF6FF;border-left:3px solid var(--blue);'
+      : '';
+
+    html += `<tr style="${rowStyle}">`;
+    html += `<td style="font-weight:700;color:var(--blue);font-size:13px;">${ebKey.replace('EB','EB-')}</td>`;
+    html += `<td style="font-size:12px;color:var(--white2);">${catLabels[ebKey] || ebKey}${isYours ? ' <span style="background:#DBEAFE;color:#1E40AF;font-size:10px;padding:2px 6px;border-radius:4px;margin-left:4px;">YOUR CATEGORY</span>' : ''}</td>`;
+
+    for (const area of areas) {
+      const date = val.dates ? (val.dates[area] || 'C') : 'C';
+      const isCurr = date === 'C';
+      const isYoursArea = isYours && area === userCountry;
+      let cellStyle = '';
+      if (isYoursArea)
+        cellStyle = 'background:#DBEAFE;font-weight:700;color:#1E40AF;';
+      else if (isCurr)
+        cellStyle = 'color:#047857;font-weight:600;';
+      else
+        cellStyle = 'color:var(--white2);';
+
+      html += `<td class="mono" style="font-size:12px;${cellStyle}">${isCurr ? 'Current' : fmtDate(date)}</td>`;
+    }
+    html += '</tr>';
+  }
+
+  html += '</tbody></table></div>';
+  return html;
+}
+
 // ── Patch visa bulletin UI with live data ──
 function patchBulletinUI(data) {
-  if (!data || !data.employment_based) return;
-  const eb = data.employment_based;
+  if (!data) return;
 
-  // Update topbar date pill
+  const tableA = data.table_a || {};
+  const tableB = data.table_b || {};
+  // Legacy fallback
+  const eb = data.employment_based || {};
+
+  // Update topbar date pill and month labels
   const monthEl = document.getElementById('topbar-date');
   if (monthEl && data.month) monthEl.textContent = data.month;
-
-  // Store for use in visa-timeline page
-  window.LIVE._bulletin = eb;
-
-  // ── Rebuild Visa Bulletin page table ──
-  const bulletinBody = document.getElementById('bulletin-live-body');
-  if (bulletinBody) {
-    const rows = [
-      { cat: 'EB-1 All Chargeability', key: 'EB1', area: 'All' },
-      { cat: 'EB-1 China',             key: 'EB1', area: 'China' },
-      { cat: 'EB-1 India',             key: 'EB1', area: 'India' },
-      { cat: 'EB-2 All Chargeability', key: 'EB2', area: 'All' },
-      { cat: 'EB-2 India ← YOUR CATEGORY', key: 'EB2', area: 'India', highlight: true },
-      { cat: 'EB-2 China',             key: 'EB2', area: 'China' },
-      { cat: 'EB-3 All Chargeability', key: 'EB3', area: 'All' },
-      { cat: 'EB-3 India',             key: 'EB3', area: 'India' },
-      { cat: 'EB-3 China',             key: 'EB3', area: 'China' },
-    ];
-    bulletinBody.innerHTML = rows.map(r => {
-      const date   = eb[r.key] ? fmtDate(eb[r.key][r.area]) : '—';
-      const isCurr = date.includes('Current');
-      const style  = r.highlight ? 'background:var(--blue-dim);border-radius:var(--r-sm);padding:10px 8px;margin:-2px -8px;' : '';
-      const dateColor = isCurr ? 'color:var(--green);font-weight:600;' : (r.highlight ? 'color:var(--amber);font-weight:600;' : '');
-      return `<div class="bulletin-row${r.highlight ? ' your-row' : ''}" style="${style}">
-        <div style="font-size:13px;${r.highlight ? 'font-weight:600;' : ''}">${r.cat}</div>
-        <div class="mono" style="${dateColor}">${date}</div>
-        <div class="mono" style="color:var(--white3);">—</div>
-        <div class="bulletin-move none">—</div>
-      </div>`;
-    }).join('');
-  }
-
-  // ── Update dashboard Priority Date tracker ──
-  const eb2India = eb.EB2 ? eb.EB2.India : null;
-  if (eb2India) {
-    // Update bulletin cutoff shown on dashboard card
-    document.querySelectorAll('.live-eb2-india-cutoff').forEach(el => {
-      el.textContent = fmtDate(eb2India);
-    });
-    // Update visa timeline page
-    document.querySelectorAll('.live-eb2-india-display').forEach(el => {
-      el.textContent = fmtDate(eb2India);
-    });
-  }
-
-  // Update bulletin month display everywhere
   document.querySelectorAll('.live-bulletin-month').forEach(el => {
     el.textContent = data.month || 'Latest';
   });
 
-  // ── Update dashboard bulletin rows ──
+  // Store for timeline page
+  window.LIVE._bulletin   = eb;
+  window.LIVE._tableA     = tableA;
+  window.LIVE._tableB     = tableB;
+
+  // User's category — read from profile or default to EB2 India
+  const userEbKey    = window.USER_EB_KEY    || 'EB2';
+  const userCountry  = window.USER_COUNTRY   || 'India';
+
+  // ── Full Visa Bulletin page — render both tables ──
+  const bulletinContainer = document.getElementById('bulletin-live-body');
+  if (bulletinContainer) {
+    const labelA = data.table_a_label || 'A. Final Action Dates for Employment-Based Preference Cases';
+    const labelB = data.table_b_label || 'B. Dates for Filing of Employment-Based Visa Applications';
+
+    bulletinContainer.innerHTML = `
+      <div style="margin-bottom:6px;">
+        <div style="font-size:11px;font-weight:700;color:var(--white3);text-transform:uppercase;
+                    letter-spacing:0.6px;padding:10px 0 6px;border-top:1px solid var(--border);">
+          ${labelA}
+        </div>
+        ${buildBulletinTable(tableA, userEbKey, userCountry, labelA)}
+      </div>
+      <div style="margin-top:20px;">
+        <div style="font-size:11px;font-weight:700;color:var(--white3);text-transform:uppercase;
+                    letter-spacing:0.6px;padding:10px 0 6px;border-top:1px solid var(--border);">
+          ${labelB}
+        </div>
+        ${buildBulletinTable(tableB, userEbKey, userCountry, labelB)}
+      </div>`;
+  }
+
+  // ── Dashboard mini bulletin card ──
   const dashBulletin = document.getElementById('dash-bulletin-rows');
-  if (dashBulletin && eb) {
-    const categories = [
-      { label: 'EB-1 (India)',       val: eb.EB1 ? eb.EB1.India : 'C' },
-      { label: 'EB-2 (India)',       val: eb.EB2 ? eb.EB2.India : 'C', yours: true },
-      { label: 'EB-3 (India)',       val: eb.EB3 ? eb.EB3.India : 'C' },
-      { label: 'EB-2 (China)',       val: eb.EB2 ? eb.EB2.China : 'C' },
-      { label: 'EB-2 (All others)',  val: eb.EB2 ? eb.EB2.All   : 'C' },
+  if (dashBulletin) {
+    const getD = (key, area) => {
+      const d = tableA[key] ? (tableA[key].dates || {})[area] : null;
+      return d || eb[key]?.[area] || 'C';
+    };
+    const rows = [
+      { label:'EB-1 (India)',       key:'EB1', area:'India'  },
+      { label:'EB-2 (India)',       key:'EB2', area:'India', yours:true },
+      { label:'EB-3 (India)',       key:'EB3', area:'India'  },
+      { label:'EB-2 (China)',       key:'EB2', area:'China'  },
+      { label:'EB-2 (All others)',  key:'EB2', area:'All'    },
     ];
-    dashBulletin.innerHTML = categories.map(c => {
-      const isCurr = !c.val || c.val === 'C';
-      const display = isCurr ? 'Current (C)' : fmtDate(c.val);
-      const color = c.yours ? 'color:var(--amber);' : (isCurr ? 'color:var(--green);' : 'color:var(--white2);');
-      return `<div class="bulletin-row">
-        <span class="bulletin-category"${c.yours ? ' style="font-weight:600;"' : ''}>${c.label}${c.yours ? ' ← yours' : ''}</span>
-        <span class="bulletin-date mono" style="${color}">${display}</span>
+    dashBulletin.innerHTML = rows.map(r => {
+      const val    = getD(r.key, r.area);
+      const isCurr = val === 'C';
+      const disp   = isCurr ? 'Current (C)' : fmtDate(val);
+      const color  = r.yours ? 'color:#1D4ED8;font-weight:700;'
+                   : isCurr  ? 'color:#047857;font-weight:600;'
+                   :           'color:var(--white2);';
+      const rowBg  = r.yours ? 'background:#EFF6FF;border-radius:4px;padding:2px 4px;margin:-2px -4px;' : '';
+      return `<div class="bulletin-row" style="${rowBg}">
+        <span class="bulletin-category" style="${r.yours ? 'font-weight:700;' : ''}">
+          ${r.label}${r.yours ? ' <span style="font-size:10px;color:#1D4ED8;">← yours</span>' : ''}
+        </span>
+        <span class="bulletin-date mono" style="${color}">${disp}</span>
         <span class="bulletin-diff none">—</span>
       </div>`;
     }).join('');
   }
 
-  console.log('VisaDash: bulletin UI updated for', data.month);
+  // ── Update dashboard priority date cutoff value ──
+  const eb2IndiaA = tableA.EB2 ? (tableA.EB2.dates||{}).India : (eb.EB2||{}).India;
+  document.querySelectorAll('.live-eb2-india-cutoff').forEach(el => {
+    if (eb2IndiaA) el.textContent = fmtDate(eb2IndiaA);
+  });
+
+  console.log('VisaDash: bulletin UI updated for', data.month,
+    '| Table A:', Object.keys(tableA).length, 'cats',
+    '| Table B:', Object.keys(tableB).length, 'cats');
 }
 
 // ── Patch processing time intelligence with real USCIS data ──

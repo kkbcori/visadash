@@ -2413,8 +2413,14 @@ function patchBulletinUI(data) {
     el.textContent = data.month || 'Latest';
   });
 
+  // User's category — read from profile or default to EB2 India
+  const userEbKey   = window.USER_EB_KEY  || 'EB2';
+  const userCountry = window.USER_COUNTRY || 'India';
+
   // Store for timeline page
-  window.LIVE._bulletin   = eb;
+  window.LIVE._bulletin = eb;
+  window.LIVE._tableA   = tableA;
+  window.LIVE._tableB   = tableB;
 
   // Update user category badge in header
   const catBadge = document.getElementById('user-cat-badge');
@@ -2422,12 +2428,6 @@ function patchBulletinUI(data) {
     const catNames = {EB1:'EB-1',EB2:'EB-2',EB3:'EB-3',EB4:'EB-4',EB5:'EB-5'};
     catBadge.textContent = (catNames[userEbKey] || userEbKey) + ' ' + userCountry;
   }
-  window.LIVE._tableA     = tableA;
-  window.LIVE._tableB     = tableB;
-
-  // User's category — read from profile or default to EB2 India
-  const userEbKey    = window.USER_EB_KEY    || 'EB2';
-  const userCountry  = window.USER_COUNTRY   || 'India';
 
   // ── Full Visa Bulletin page — render both tables ──
   const bulletinContainer = document.getElementById('bulletin-live-body');

@@ -1,15 +1,42 @@
 {
-  "fetched": "2026-03-18T00:00:00",
+  "fetched": "2026-03-18T20:04:46.708839+00:00",
   "month": "March 2026",
-  "source": "https://travel.state.gov",
+  "source": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2026/visa-bulletin-for-march-2026.html",
   "employment_based": {
-    "EB1": { "All":"C", "China":"2022-11-08", "India":"2023-01-01", "Mexico":"C", "Philippines":"C" },
-    "EB2": { "All":"C", "China":"2020-06-01", "India":"2012-01-01", "Mexico":"C", "Philippines":"C" },
-    "EB3": { "All":"C", "China":"2020-10-01", "India":"2012-04-01", "Mexico":"C", "Philippines":"2021-10-01" }
-  },
-  "movement": {
-    "EB1_India": "+2.5 weeks", "EB2_India": "+2.5 weeks",
-    "EB3_India": "+3.5 weeks", "EB2_China": "No movement"
-  },
-  "previous_month": { "EB2_India": "2011-12-15", "EB3_India": "2012-03-08" }
+    "EB1": {
+      "All": "2021-11-01",
+      "China": "2018-12-08",
+      "India": "2013-11-15",
+      "Mexico": "2021-11-01",
+      "Philippines": "2021-11-01"
+    },
+    "EB2": {
+      "All": "2021-07-15",
+      "China": "2021-07-15",
+      "India": "2021-07-15",
+      "Mexico": "2021-07-15",
+      "Philippines": "2021-07-15"
+    },
+    "EB3": {
+      "All": "2023-10-01",
+      "China": "2021-05-01",
+      "India": "2013-11-15",
+      "Mexico": "2023-10-01",
+      "Philippines": "2023-08-01"
+    },
+    "EB4": {
+      "All": "2021-07-15",
+      "China": "2021-07-15",
+      "India": "2021-07-15",
+      "Mexico": "2021-07-15",
+      "Philippines": "2021-07-15"
+    },
+    "EB5": {
+      "All": "C",
+      "China": "C",
+      "India": "C",
+      "Mexico": "C",
+      "Philippines": "C"
+    }
+  }
 }

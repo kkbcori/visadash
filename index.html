@@ -538,11 +538,11 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--white)
       <div class="grid-2" style="margin-top:16px;gap:16px;">
         <div class="card">
           <div class="card-title">
-            <div class="card-title-left"><div class="card-icon blue">📊</div> Priority Date — May 2026 Bulletin</div>
+            <div class="card-title-left"><div class="card-icon blue">📊</div> Priority Date — <span class="live-bulletin-month">May 2026</span> Bulletin</div>
             <span class="link-btn" onclick="showPage('visa-bulletin')">Full Bulletin →</span>
           </div>
           <div class="metric-row"><span class="metric-name">Your Priority Date (EB-2 India)</span><span class="metric-val teal">Jan 01, 2019</span></div>
-          <div class="metric-row"><span class="metric-name">Current Bulletin Cutoff</span><span class="metric-val amber">Jan 01, 2012</span></div>
+          <div class="metric-row"><span class="metric-name">Current Bulletin Cutoff</span><span class="metric-val amber live-eb2-india-cutoff">Jan 01, 2012</span></div>
           <div class="metric-row"><span class="metric-name">Gap Behind Current</span><span class="metric-val red">~7 years</span></div>
           <div class="metric-row"><span class="metric-name">Monthly Movement Rate</span><span class="metric-val">~3 weeks/mo</span></div>
           <div class="metric-row"><span class="metric-name">Estimated Wait</span><span class="metric-val red">9–12 years</span></div>
@@ -947,7 +947,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--white)
     <div class="page" id="page-visa-bulletin">
       <div class="card" style="margin-bottom:16px;">
         <div class="card-title">
-          <div class="card-title-left"><div class="card-icon blue" style="width:24px;height:24px;font-size:12px;">📋</div> May 2026 Visa Bulletin — Employment-Based Categories</div>
+          <div class="card-title-left"><div class="card-icon blue" style="width:24px;height:24px;font-size:12px;">📋</div> <span class="live-bulletin-month">May 2026</span> Visa Bulletin — Employment-Based Categories</div>
           <span style="font-size:11px;color:var(--white3);">Source: travel.state.gov · Updated May 1, 2026</span>
         </div>
         <div class="bulletin-row header">
@@ -1006,6 +1006,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--white)
           <div class="mono">Oct 01, 2020</div>
           <div class="mono" style="color:var(--white3);">Sep 22, 2020</div>
           <div class="bulletin-move pos">+1.5 wks</div>
+        </div>
         </div>
         <div class="insight amber" style="margin-top:14px;">EB-2 India had <strong>no movement</strong> this month (Jan 2012 cutoff remains). At the trailing 12-month average movement of ~3 weeks/month, your Jan 2019 priority date requires approximately 112 more months of movement — roughly 9–10 additional years, before retrogression risk.</div>
       </div>
@@ -2336,15 +2337,96 @@ function liveEmployerLookup(name) {
   return match ? window.LIVE._empIndex[match] : null;
 }
 
+// ── Format ISO date to readable string ──
+function fmtDate(iso) {
+  if (!iso || iso === 'C') return 'Current (C)';
+  try {
+    const d = new Date(iso + 'T00:00:00Z');
+    return d.toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: 'numeric', timeZone: 'UTC' });
+  } catch(e) { return iso; }
+}
+
 // ── Patch visa bulletin UI with live data ──
 function patchBulletinUI(data) {
   if (!data || !data.employment_based) return;
+  const eb = data.employment_based;
+
   // Update topbar date pill
   const monthEl = document.getElementById('topbar-date');
   if (monthEl && data.month) monthEl.textContent = data.month;
+
   // Store for use in visa-timeline page
-  window.LIVE._bulletin = data.employment_based;
-  console.log('VisaDash: bulletin loaded for', data.month);
+  window.LIVE._bulletin = eb;
+
+  // ── Rebuild Visa Bulletin page table ──
+  const bulletinBody = document.getElementById('bulletin-live-body');
+  if (bulletinBody) {
+    const rows = [
+      { cat: 'EB-1 All Chargeability', key: 'EB1', area: 'All' },
+      { cat: 'EB-1 China',             key: 'EB1', area: 'China' },
+      { cat: 'EB-1 India',             key: 'EB1', area: 'India' },
+      { cat: 'EB-2 All Chargeability', key: 'EB2', area: 'All' },
+      { cat: 'EB-2 India ← YOUR CATEGORY', key: 'EB2', area: 'India', highlight: true },
+      { cat: 'EB-2 China',             key: 'EB2', area: 'China' },
+      { cat: 'EB-3 All Chargeability', key: 'EB3', area: 'All' },
+      { cat: 'EB-3 India',             key: 'EB3', area: 'India' },
+      { cat: 'EB-3 China',             key: 'EB3', area: 'China' },
+    ];
+    bulletinBody.innerHTML = rows.map(r => {
+      const date   = eb[r.key] ? fmtDate(eb[r.key][r.area]) : '—';
+      const isCurr = date.includes('Current');
+      const style  = r.highlight ? 'background:var(--blue-dim);border-radius:var(--r-sm);padding:10px 8px;margin:-2px -8px;' : '';
+      const dateColor = isCurr ? 'color:var(--green);font-weight:600;' : (r.highlight ? 'color:var(--amber);font-weight:600;' : '');
+      return `<div class="bulletin-row${r.highlight ? ' your-row' : ''}" style="${style}">
+        <div style="font-size:13px;${r.highlight ? 'font-weight:600;' : ''}">${r.cat}</div>
+        <div class="mono" style="${dateColor}">${date}</div>
+        <div class="mono" style="color:var(--white3);">—</div>
+        <div class="bulletin-move none">—</div>
+      </div>`;
+    }).join('');
+  }
+
+  // ── Update dashboard Priority Date tracker ──
+  const eb2India = eb.EB2 ? eb.EB2.India : null;
+  if (eb2India) {
+    // Update bulletin cutoff shown on dashboard card
+    document.querySelectorAll('.live-eb2-india-cutoff').forEach(el => {
+      el.textContent = fmtDate(eb2India);
+    });
+    // Update visa timeline page
+    document.querySelectorAll('.live-eb2-india-display').forEach(el => {
+      el.textContent = fmtDate(eb2India);
+    });
+  }
+
+  // Update bulletin month display everywhere
+  document.querySelectorAll('.live-bulletin-month').forEach(el => {
+    el.textContent = data.month || 'Latest';
+  });
+
+  // ── Update dashboard bulletin rows ──
+  const dashBulletin = document.getElementById('dash-bulletin-rows');
+  if (dashBulletin && eb) {
+    const categories = [
+      { label: 'EB-1 (India)',       val: eb.EB1 ? eb.EB1.India : 'C' },
+      { label: 'EB-2 (India)',       val: eb.EB2 ? eb.EB2.India : 'C', yours: true },
+      { label: 'EB-3 (India)',       val: eb.EB3 ? eb.EB3.India : 'C' },
+      { label: 'EB-2 (China)',       val: eb.EB2 ? eb.EB2.China : 'C' },
+      { label: 'EB-2 (All others)',  val: eb.EB2 ? eb.EB2.All   : 'C' },
+    ];
+    dashBulletin.innerHTML = categories.map(c => {
+      const isCurr = !c.val || c.val === 'C';
+      const display = isCurr ? 'Current (C)' : fmtDate(c.val);
+      const color = c.yours ? 'color:var(--amber);' : (isCurr ? 'color:var(--green);' : 'color:var(--white2);');
+      return `<div class="bulletin-row">
+        <span class="bulletin-category"${c.yours ? ' style="font-weight:600;"' : ''}>${c.label}${c.yours ? ' ← yours' : ''}</span>
+        <span class="bulletin-date mono" style="${color}">${display}</span>
+        <span class="bulletin-diff none">—</span>
+      </div>`;
+    }).join('');
+  }
+
+  console.log('VisaDash: bulletin UI updated for', data.month);
 }
 
 // ── Patch processing time intelligence with real USCIS data ──

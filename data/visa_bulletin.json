@@ -1,137 +1,267 @@
 {
-  "fetched": "2026-03-18T20:52:28.917885+00:00",
+  "fetched": "2026-03-20T11:46:34.433174+00:00",
   "month": "March 2026",
   "source": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2026/visa-bulletin-for-march-2026.html",
-  "table_a_label": "Final Action Dates for Employment-Based Preference Cases",
-  "table_b_label": "Dates for Filing of Employment-Based Visa Applications",
-  "table_a": {
-    "EB1": {
+  "table_a_label": "A.  FINAL ACTION DATES FOR EMPLOYMENT-BASED PREFERENCE CASES",
+  "table_b_label": "B.  DATES FOR FILING OF EMPLOYMENT-BASED VISA APPLICATIONS",
+  "table_a": [
+    {
+      "key": "EB1",
+      "label": "1st Priority \u2014 Priority Workers",
+      "eb_group": "EB1",
       "dates": {
-        "All": "2021-11-01",
-        "China": "2018-12-08",
-        "India": "2013-11-15",
-        "Mexico": "2021-11-01",
-        "Philippines": "2021-11-01"
-      },
-      "label": "1st Priority (EB-1) \u2014 Priority Workers",
-      "raw_first_cell": "Other Workers"
+        "All": "C",
+        "China": "2023-03-01",
+        "India": "2023-03-01",
+        "Mexico": "C",
+        "Philippines": "C"
+      }
     },
-    "EB2": {
+    {
+      "key": "EB2",
+      "label": "2nd Priority \u2014 Advanced Degree / Exceptional Ability",
+      "eb_group": "EB2",
       "dates": {
-        "All": "2021-07-15",
-        "China": "2021-07-15",
-        "India": "2021-07-15",
-        "Mexico": "2021-07-15",
-        "Philippines": "2021-07-15"
-      },
-      "label": "2nd Priority (EB-2) \u2014 Advanced Degree / Exceptional Ability",
-      "raw_first_cell": "Certain Religious Workers"
+        "All": "2024-10-15",
+        "China": "2021-09-01",
+        "India": "2013-09-15",
+        "Mexico": "2024-10-15",
+        "Philippines": "2024-10-15"
+      }
     },
-    "EB3": {
+    {
+      "key": "EB3",
+      "label": "3rd Priority \u2014 Skilled Workers & Professionals",
+      "eb_group": "EB3",
       "dates": {
         "All": "2023-10-01",
         "China": "2021-05-01",
         "India": "2013-11-15",
         "Mexico": "2023-10-01",
         "Philippines": "2023-08-01"
-      },
-      "label": "3rd Priority (EB-3) \u2014 Skilled Workers, Professionals, Unskilled",
-      "raw_first_cell": "3rd"
+      }
     },
-    "EB4": {
+    {
+      "key": "EB3_other",
+      "label": "3rd Priority \u2014 Other Workers (Unskilled)",
+      "eb_group": "EB3",
+      "dates": {
+        "All": "2021-11-01",
+        "China": "2018-12-08",
+        "India": "2013-11-15",
+        "Mexico": "2021-11-01",
+        "Philippines": "2021-11-01"
+      }
+    },
+    {
+      "key": "EB4",
+      "label": "4th Priority \u2014 Special Immigrants",
+      "eb_group": "EB4",
       "dates": {
         "All": "2021-07-15",
         "China": "2021-07-15",
         "India": "2021-07-15",
         "Mexico": "2021-07-15",
         "Philippines": "2021-07-15"
-      },
-      "label": "4th Priority (EB-4) \u2014 Special Immigrants",
-      "raw_first_cell": "4th"
+      }
     },
-    "EB5": {
+    {
+      "key": "EB4_religious",
+      "label": "4th Priority \u2014 Certain Religious Workers",
+      "eb_group": "EB4",
+      "dates": {
+        "All": "2021-07-15",
+        "China": "2021-07-15",
+        "India": "2021-07-15",
+        "Mexico": "2021-07-15",
+        "Philippines": "2021-07-15"
+      }
+    },
+    {
+      "key": "EB5_unreserved",
+      "label": "5th Priority \u2014 Unreserved (C5, T5, I5, R5, NU, RU)",
+      "eb_group": "EB5",
+      "dates": {
+        "All": "C",
+        "China": "2016-08-15",
+        "India": "2022-05-01",
+        "Mexico": "C",
+        "Philippines": "C"
+      }
+    },
+    {
+      "key": "EB5_rural",
+      "label": "5th Priority \u2014 Set Aside: Rural (NR, RR - 20%)",
+      "eb_group": "EB5",
       "dates": {
         "All": "C",
         "China": "C",
         "India": "C",
         "Mexico": "C",
         "Philippines": "C"
-      },
-      "label": "5th Priority (EB-5) \u2014 Employment Creation",
-      "raw_first_cell": "5th Set Aside: Infrastructure (2%, including RI)"
+      }
+    },
+    {
+      "key": "EB5_highunemployment",
+      "label": "5th Priority \u2014 Set Aside: High Unemployment (NH, RH - 10%)",
+      "eb_group": "EB5",
+      "dates": {
+        "All": "C",
+        "China": "C",
+        "India": "C",
+        "Mexico": "C",
+        "Philippines": "C"
+      }
+    },
+    {
+      "key": "EB5_infrastructure",
+      "label": "5th Priority \u2014 Set Aside: Infrastructure (RI - 2%)",
+      "eb_group": "EB5",
+      "dates": {
+        "All": "C",
+        "China": "C",
+        "India": "C",
+        "Mexico": "C",
+        "Philippines": "C"
+      }
     }
-  },
-  "table_b": {
-    "EB1": {
+  ],
+  "table_b": [
+    {
+      "key": "EB1",
+      "label": "1st Priority \u2014 Priority Workers",
+      "eb_group": "EB1",
       "dates": {
-        "All": "2022-06-22",
-        "China": "2019-10-01",
-        "India": "2014-08-15",
-        "Mexico": "2022-06-22",
-        "Philippines": "2022-06-22"
-      },
-      "label": "1st Priority (EB-1) \u2014 Priority Workers",
-      "raw_first_cell": "Other Workers"
+        "All": "C",
+        "China": "2023-12-01",
+        "India": "2023-12-01",
+        "Mexico": "C",
+        "Philippines": "C"
+      }
     },
-    "EB2": {
+    {
+      "key": "EB2",
+      "label": "2nd Priority \u2014 Advanced Degree / Exceptional Ability",
+      "eb_group": "EB2",
       "dates": {
-        "All": "2023-01-01",
-        "China": "2023-01-01",
-        "India": "2023-01-01",
-        "Mexico": "2023-01-01",
-        "Philippines": "2023-01-01"
-      },
-      "label": "2nd Priority (EB-2) \u2014 Advanced Degree / Exceptional Ability",
-      "raw_first_cell": "Certain Religious Workers"
+        "All": "C",
+        "China": "2022-01-01",
+        "India": "2014-11-01",
+        "Mexico": "C",
+        "Philippines": "C"
+      }
     },
-    "EB3": {
+    {
+      "key": "EB3",
+      "label": "3rd Priority \u2014 Skilled Workers & Professionals",
+      "eb_group": "EB3",
       "dates": {
         "All": "2024-01-15",
         "China": "2022-01-01",
         "India": "2014-08-15",
         "Mexico": "2024-01-15",
         "Philippines": "2024-01-01"
-      },
-      "label": "3rd Priority (EB-3) \u2014 Skilled Workers, Professionals, Unskilled",
-      "raw_first_cell": "3rd"
+      }
     },
-    "EB4": {
+    {
+      "key": "EB3_other",
+      "label": "3rd Priority \u2014 Other Workers (Unskilled)",
+      "eb_group": "EB3",
+      "dates": {
+        "All": "2022-06-22",
+        "China": "2019-10-01",
+        "India": "2014-08-15",
+        "Mexico": "2022-06-22",
+        "Philippines": "2022-06-22"
+      }
+    },
+    {
+      "key": "EB4",
+      "label": "4th Priority \u2014 Special Immigrants",
+      "eb_group": "EB4",
       "dates": {
         "All": "2023-01-01",
         "China": "2023-01-01",
         "India": "2023-01-01",
         "Mexico": "2023-01-01",
         "Philippines": "2023-01-01"
-      },
-      "label": "4th Priority (EB-4) \u2014 Special Immigrants",
-      "raw_first_cell": "4th"
+      }
     },
-    "EB5": {
+    {
+      "key": "EB4_religious",
+      "label": "4th Priority \u2014 Certain Religious Workers",
+      "eb_group": "EB4",
+      "dates": {
+        "All": "2023-01-01",
+        "China": "2023-01-01",
+        "India": "2023-01-01",
+        "Mexico": "2023-01-01",
+        "Philippines": "2023-01-01"
+      }
+    },
+    {
+      "key": "EB5_unreserved",
+      "label": "5th Priority \u2014 Unreserved (C5, T5, I5, R5, NU, RU)",
+      "eb_group": "EB5",
+      "dates": {
+        "All": "C",
+        "China": "2016-10-01",
+        "India": "2024-05-01",
+        "Mexico": "C",
+        "Philippines": "C"
+      }
+    },
+    {
+      "key": "EB5_rural",
+      "label": "5th Priority \u2014 Set Aside: Rural (NR, RR - 20%)",
+      "eb_group": "EB5",
       "dates": {
         "All": "C",
         "China": "C",
         "India": "C",
         "Mexico": "C",
         "Philippines": "C"
-      },
-      "label": "5th Priority (EB-5) \u2014 Employment Creation",
-      "raw_first_cell": "5th Set Aside: (Infrastructure: RI - 2%)"
+      }
+    },
+    {
+      "key": "EB5_highunemployment",
+      "label": "5th Priority \u2014 Set Aside: High Unemployment (NH, RH - 10%)",
+      "eb_group": "EB5",
+      "dates": {
+        "All": "C",
+        "China": "C",
+        "India": "C",
+        "Mexico": "C",
+        "Philippines": "C"
+      }
+    },
+    {
+      "key": "EB5_infrastructure",
+      "label": "5th Priority \u2014 Set Aside: Infrastructure (RI - 2%)",
+      "eb_group": "EB5",
+      "dates": {
+        "All": "C",
+        "China": "C",
+        "India": "C",
+        "Mexico": "C",
+        "Philippines": "C"
+      }
     }
-  },
+  ],
   "employment_based": {
     "EB1": {
-      "All": "2021-11-01",
-      "China": "2018-12-08",
-      "India": "2013-11-15",
-      "Mexico": "2021-11-01",
-      "Philippines": "2021-11-01"
+      "All": "C",
+      "China": "2023-03-01",
+      "India": "2023-03-01",
+      "Mexico": "C",
+      "Philippines": "C"
     },
     "EB2": {
-      "All": "2021-07-15",
-      "China": "2021-07-15",
-      "India": "2021-07-15",
-      "Mexico": "2021-07-15",
-      "Philippines": "2021-07-15"
+      "All": "2024-10-15",
+      "China": "2021-09-01",
+      "India": "2013-09-15",
+      "Mexico": "2024-10-15",
+      "Philippines": "2024-10-15"
     },
     "EB3": {
       "All": "2023-10-01",
@@ -149,8 +279,8 @@
     },
     "EB5": {
       "All": "C",
-      "China": "C",
-      "India": "C",
+      "China": "2016-08-15",
+      "India": "2022-05-01",
       "Mexico": "C",
       "Philippines": "C"
     }

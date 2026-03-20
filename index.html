@@ -2380,7 +2380,7 @@ function buildBulletinTable(tableRows, userEbKey, userCountry) {
     // Priority column — show EB number only on primary row, blank on sub-rows
     const priorityDisplay = isSub
       ? `<span style="color:#9CA3AF;font-size:11px;">↳</span>`
-      : `<span style="font-family:var(--font-display);font-weight:800;font-size:14px;color:#2563EB;">
+      : `<span style="font-family:var(--font-display);font-weight:700;font-size:11px;color:#2563EB;">
            ${ebGroup.replace('EB','EB-')}
          </span>`;
     html += `<td style="text-align:center;">${priorityDisplay}</td>`;

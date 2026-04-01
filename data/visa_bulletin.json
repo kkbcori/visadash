@@ -1,7 +1,7 @@
 {
-  "fetched": "2026-03-25T11:59:58.776557+00:00",
-  "month": "March 2026",
-  "source": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2026/visa-bulletin-for-march-2026.html",
+  "fetched": "2026-04-01T12:07:25.581196+00:00",
+  "month": "April 2026",
+  "source": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2026/visa-bulletin-for-april-2026.html",
   "table_a_label": "A.  FINAL ACTION DATES FOR EMPLOYMENT-BASED PREFERENCE CASES",
   "table_b_label": "B.  DATES FOR FILING OF EMPLOYMENT-BASED VISA APPLICATIONS",
   "table_a": [
@@ -11,8 +11,8 @@
       "eb_group": "EB1",
       "dates": {
         "All": "C",
-        "China": "2023-03-01",
-        "India": "2023-03-01",
+        "China": "2023-04-01",
+        "India": "2023-04-01",
         "Mexico": "C",
         "Philippines": "C"
       }
@@ -22,11 +22,11 @@
       "label": "2nd Priority \u2014 Advanced Degree / Exceptional Ability",
       "eb_group": "EB2",
       "dates": {
-        "All": "2024-10-15",
+        "All": "C",
         "China": "2021-09-01",
-        "India": "2013-09-15",
-        "Mexico": "2024-10-15",
-        "Philippines": "2024-10-15"
+        "India": "2014-07-15",
+        "Mexico": "C",
+        "Philippines": "C"
       }
     },
     {
@@ -34,10 +34,10 @@
       "label": "3rd Priority \u2014 Skilled Workers & Professionals",
       "eb_group": "EB3",
       "dates": {
-        "All": "2023-10-01",
-        "China": "2021-05-01",
+        "All": "2024-06-01",
+        "China": "2021-06-15",
         "India": "2013-11-15",
-        "Mexico": "2023-10-01",
+        "Mexico": "2024-06-01",
         "Philippines": "2023-08-01"
       }
     },
@@ -47,7 +47,7 @@
       "eb_group": "EB3",
       "dates": {
         "All": "2021-11-01",
-        "China": "2018-12-08",
+        "China": "2019-02-01",
         "India": "2013-11-15",
         "Mexico": "2021-11-01",
         "Philippines": "2021-11-01"
@@ -58,11 +58,11 @@
       "label": "4th Priority \u2014 Special Immigrants",
       "eb_group": "EB4",
       "dates": {
-        "All": "2021-07-15",
-        "China": "2021-07-15",
-        "India": "2021-07-15",
-        "Mexico": "2021-07-15",
-        "Philippines": "2021-07-15"
+        "All": "2022-07-15",
+        "China": "2022-07-15",
+        "India": "2022-07-15",
+        "Mexico": "2022-07-15",
+        "Philippines": "2022-07-15"
       }
     },
     {
@@ -70,11 +70,11 @@
       "label": "4th Priority \u2014 Certain Religious Workers",
       "eb_group": "EB4",
       "dates": {
-        "All": "2021-07-15",
-        "China": "2021-07-15",
-        "India": "2021-07-15",
-        "Mexico": "2021-07-15",
-        "Philippines": "2021-07-15"
+        "All": "2022-07-15",
+        "China": "2022-07-15",
+        "India": "2022-07-15",
+        "Mexico": "2022-07-15",
+        "Philippines": "2022-07-15"
       }
     },
     {
@@ -83,7 +83,7 @@
       "eb_group": "EB5",
       "dates": {
         "All": "C",
-        "China": "2016-08-15",
+        "China": "2016-09-01",
         "India": "2022-05-01",
         "Mexico": "C",
         "Philippines": "C"
@@ -146,7 +146,7 @@
       "dates": {
         "All": "C",
         "China": "2022-01-01",
-        "India": "2014-11-01",
+        "India": "2015-01-15",
         "Mexico": "C",
         "Philippines": "C"
       }
@@ -156,10 +156,10 @@
       "label": "3rd Priority \u2014 Skilled Workers & Professionals",
       "eb_group": "EB3",
       "dates": {
-        "All": "2024-01-15",
+        "All": "C",
         "China": "2022-01-01",
-        "India": "2014-08-15",
-        "Mexico": "2024-01-15",
+        "India": "2015-01-15",
+        "Mexico": "C",
         "Philippines": "2024-01-01"
       }
     },
@@ -168,11 +168,11 @@
       "label": "3rd Priority \u2014 Other Workers (Unskilled)",
       "eb_group": "EB3",
       "dates": {
-        "All": "2022-06-22",
+        "All": "2022-08-01",
         "China": "2019-10-01",
-        "India": "2014-08-15",
-        "Mexico": "2022-06-22",
-        "Philippines": "2022-06-22"
+        "India": "2015-01-15",
+        "Mexico": "2022-08-01",
+        "Philippines": "2022-08-01"
       }
     },
     {
@@ -251,35 +251,35 @@
   "employment_based": {
     "EB1": {
       "All": "C",
-      "China": "2023-03-01",
-      "India": "2023-03-01",
+      "China": "2023-04-01",
+      "India": "2023-04-01",
       "Mexico": "C",
       "Philippines": "C"
     },
     "EB2": {
-      "All": "2024-10-15",
+      "All": "C",
       "China": "2021-09-01",
-      "India": "2013-09-15",
-      "Mexico": "2024-10-15",
-      "Philippines": "2024-10-15"
+      "India": "2014-07-15",
+      "Mexico": "C",
+      "Philippines": "C"
     },
     "EB3": {
-      "All": "2023-10-01",
-      "China": "2021-05-01",
+      "All": "2024-06-01",
+      "China": "2021-06-15",
       "India": "2013-11-15",
-      "Mexico": "2023-10-01",
+      "Mexico": "2024-06-01",
       "Philippines": "2023-08-01"
     },
     "EB4": {
-      "All": "2021-07-15",
-      "China": "2021-07-15",
-      "India": "2021-07-15",
-      "Mexico": "2021-07-15",
-      "Philippines": "2021-07-15"
+      "All": "2022-07-15",
+      "China": "2022-07-15",
+      "India": "2022-07-15",
+      "Mexico": "2022-07-15",
+      "Philippines": "2022-07-15"
     },
     "EB5": {
       "All": "C",
-      "China": "2016-08-15",
+      "China": "2016-09-01",
       "India": "2022-05-01",
       "Mexico": "C",
       "Philippines": "C"
